@@ -1,0 +1,59 @@
+body {
+  color: color(White);
+  line-height: 2;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 2;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: color(Blue);
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0;
+  margin: 0;
+  &.sub {
+    color: color(White);
+  }
+}
+h1 {
+  font-size: 40px;
+	@media #{$small-only} {
+		font-size: rem(24);
+	}
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 22px;
+}
+h4 {
+  font-size: 18px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  color: color(Blue);
+}
+
+a[href*="tel:"] {
+  text-decoration: none;
+}

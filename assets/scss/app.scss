@@ -1,0 +1,70 @@
+// Basics
+@import 'tools/pre';
+@import 'typography/embed';
+
+// Define output settings for project
+$output: set-output(css, true);
+$output: set-output(reset-extra, false);
+$output: set-output(color-background-colors, true);
+$output: set-output(color-text-colors, true);
+$output: set-output(blockquote, false);
+$output: set-output(form-fieldset, false);
+
+// Output the whole framework
+@import '~henris';
+@import 'tools/post';
+// Theme
+@import 'typography/typography';
+@import 'components/index';
+
+body {
+	background-color: color(Black);
+	min-height: 100%;
+	height: auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+body.home {
+	background-image:url('../img/bg/soniaboth.jpg');
+}	
+body.tour {
+	background-image:url('../img/bg/scream.jpg');
+}
+body.music-video {
+	background-image:url('../img/bg/scream.jpg');
+}
+body.sepiroth {
+	background-image:url('../img/sepirothbg.jpg');
+}
+body.contact {
+	background-image:url('../img/bg/sonia2guitar.jpg');
+	background-position: top center;
+}
+body.burning-witches {
+	background-image:url('../img/burningwitchesbg.jpg');
+}
+body.about {
+	background-image:url('../img/bg/sonia2guitar.jpg');
+	background-position: top center;
+}
+.page {
+	z-index: 1;
+	@media #{$small-only} {
+		padding: 0 20px;
+	}
+}
+
+img:not([alt]), img[alt=""] {
+    outline: none;
+}
+
+
+.text-centered {
+	text-align: center;
+}
+
+iframe {
+	margin: grid(0.5 0);
+}
