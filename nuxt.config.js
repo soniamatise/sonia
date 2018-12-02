@@ -4,6 +4,9 @@ module.exports = {
 	/*
   ** Headers of the page
   */
+	env: {
+		apiDomain: 'http://localhost:8888/wp-json',// CHANGE
+	},
 	head: {
 		title: 'Sonia Anubis',
 		meta: [
