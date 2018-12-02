@@ -1,6 +1,6 @@
 # sonia
 
-> My terrific Matise Nuxt.js project
+> My terrific project
 
 ## Build Setup
 
