@@ -2,10 +2,12 @@
 	<main class="page page--about">
 		<div class="row center small-full medium-half large-14">
 			<div class="column">
-				<div class="image-container triple">
+				<h1>{{ pageTitle }}</h1>
+				<div v-html="pageContent" />
+				<!-- <div class="image-container triple">
 					<img alt="" src="~/assets/img/logos/horus.png">
 				</div>
-				<h1>About</h1>
+				<h1>{{ pageTitle }}</h1>
 				<p>Sonia ‘Anubis’ Nusselder is a guitarist and bassist, born at 24-11-1998 in Haarlem, The Netherlands.
 				At the age of 14 she picked up the bass and at age 15 she started playing the guitar. She is a self-taught guitarist.</p>
 				<p>She plays guitar in all-female Swiss power-metal band <a href="https://www.facebook.com/burningwitches666/" target="_blank" rel="nofollow noopener noreferrer" class="external-link no-image">BURNING WITCHES</a> and bass guitar in Dutch brutal death metal band <a href="https://www.facebook.com/sepirothnl/" target="_blank" rel="nofollow noopener noreferrer" class="external-link no-image">SEPIROTH</a>.
@@ -63,14 +65,16 @@
 				</ul>
 				<p>Sonia Nusselder is proudly endorsed by <a href="https://www.planettone.com/" target="_blank" rel="nofollow noopener noreferrer" class="external-link no-image">PLANETTONE pickups</a> and <a href="http://www.harvest-guitar.com/" target="_blank" rel="nofollow noopener noreferrer" class="external-link no-image">HARVEST Bass Bags</a>.</p>
 				
-				<p><br> <br> <br> <br> <br></p>
+				<p><br> <br> <br> <br> <br></p> -->
 			</div>
 		</div>
 	</main>
 </template>
 
 <script>
-// import heading from '~/components/layout/image-head.vue';
+const axios = require('axios');
+const apiDomain = process.env.apiDomain;
+
 export default {
 	components: {
 		// heading,
@@ -83,7 +87,16 @@ export default {
 	data(){
 		return {
 		}
-	}
+	},
+	asyncData({ params, error }) {
+		return axios.get(apiDomain + '/wp/v2/pages/8').then(async result => {
+			let pageData = result.data;
+			return {
+				pageTitle: pageData.title.rendered,
+				pageContent: pageData.content.rendered,
+			};
+		});
+	},
 };
 </script>
 
