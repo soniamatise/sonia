@@ -2,16 +2,8 @@
 	<main class="page page--bands">
 		<div class="row center small-full medium-half large-14">
 			<div class="column">
-				<div class="image-container single">
-					<img src="~/assets/img/bg/burningwitches.jpg">
-				</div>
-				<p><strong>Burning Witches</strong> (heavy/powermetal) band consisting of 5 girls. Burning Witches plays international shows and festivals around Europe.
-				<em>Released 2 Full-lengths and a Live album, they are signed with Nuclear Blast.</em> (<a href="https://www.nuclearblast.de/en/label/music/band/about/4537356.burning-witches.html" target="_blank" rel="nofollow noopener noreferrer" class="external-link no-image">https://www.nuclearblast.de/en/label/music/band/about/4537356.burning-witches.html</a>).</p>
-				<iframe src="https://www.youtube.com/embed/1OCmwMFKDlE" allow="autoplay; encrypted-media" allowfullscreen="" width="560" height="315" frameborder="0"/>
-				<iframe src="https://www.youtube.com/embed/840vcVzth-0" allow="autoplay; encrypted-media" allowfullscreen="" width="560" height="315" frameborder="0"/>
-				<div class="image-container single">
-					<img src="~/assets/img/bg/promobw.jpg">
-				</div>
+				<h1>{{ pageTitle }}</h1>
+				<div v-html="pageContent" />
 			</div>
 		</div>
 	</main>
@@ -19,7 +11,9 @@
 </template>
 
 <script>
-// import henrisNuxt from '~/components/henris-nuxt.vue';
+const axios = require('axios');
+const apiDomain = process.env.apiDomain;
+
 export default {
 	components: {
 		// henrisNuxt
@@ -28,6 +22,15 @@ export default {
 		bodyAttrs: {
 		class: 'burning-witches'
 		}
+	},
+	asyncData({ params, error }) {
+		return axios.get(apiDomain + '/wp/v2/pages/8').then(async result => {
+			let pageData = result.data;
+			return {
+				pageTitle: pageData.title.rendered,
+				pageContent: pageData.content.rendered,
+			};
+		});
 	},
 };
 </script>
